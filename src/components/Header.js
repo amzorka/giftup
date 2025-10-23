@@ -2,9 +2,15 @@ import "../scss/Header.scss";
 import logoMark from "../icons/logo-mark.png";
 import mobileLogo from "../icons/mobile-logo.png";
 import { useMobile } from "../hooks/useMobile";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const isMobile = useMobile();
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate("/"); // переходит на главную страницу
+  };
 
   // функция плавного скролла к нужной секции
   const scrollToSection = (id) => {
@@ -29,11 +35,12 @@ export default function Header() {
             alt="GiftUp mobile logo"
             className="mobile__logo"
             style={{ cursor: "pointer" }}
+            onClick={handleLogoClick}
           />
         ) : (
           <div
             className="header__logo"
-            onClick={scrollToTop}
+            onClick={handleLogoClick}
             style={{ cursor: "pointer" }}
           >
             <img

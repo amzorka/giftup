@@ -30,7 +30,7 @@ function PresaleBox() {
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
           subject: "New Presale Submission",
-          from_name: "WorkFi Presale",
+          from_name: "GiftUp Presale",
           wrk: wrkNum, // количество WRK
           usdt: usdtNum, // сумма в USDT
           payTo, // наш TRC20-адрес

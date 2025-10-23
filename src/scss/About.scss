@@ -1,0 +1,170 @@
+.aboutpage {
+  width: 100%;
+  background: #fff;
+  padding: 0 0 100px 0;
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+
+  &__container {
+    width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__image {
+    width: 100%;
+    margin-bottom: 80px;
+
+    img {
+      width: 100%;
+      max-width: 1180px;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__content {
+    width: 1180px;
+    text-align: left;
+  }
+
+  &__title1 {
+    font-size: 64px;
+    font-weight: 100;
+    color: #161616;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    letter-spacing: 8%;
+  }
+
+  &__text1 {
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    color: #161616;
+    font-weight: 300;
+    text-align: left;
+  }
+
+  &__title2 {
+    text-align: right;
+    font-size: 64px;
+    font-weight: 100;
+    color: #161616;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    letter-spacing: 8%;
+  }
+
+  &__text2 {
+    text-align: right;
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    color: #161616;
+    font-weight: 300;
+  }
+}
+
+.vision {
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+.vision__container {
+  position: relative;
+  width: 1180px;
+  margin: 0 auto;
+}
+
+.vision__image {
+  position: absolute;
+  left: -310px;
+  bottom: 1200px;
+  width: 350px;
+  height: auto;
+  object-fit: contain;
+  z-index: 0;
+  opacity: 30%;
+}
+
+.vision__image2 {
+  position: absolute;
+  right: -350px;
+  top: -1200px;
+  width: 444px;
+  height: auto;
+  object-fit: contain;
+  z-index: 0;
+  opacity: 30%;
+}
+
+.about-end {
+  color: #eb6f25;
+  text-align: right;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .aboutpage__container {
+    width: calc(100% - 30px);
+  }
+
+  .aboutpage {
+    padding: 0;
+
+    &__content {
+      width: calc(100% - 30px);
+      margin: 0 auto;
+    }
+
+    &__title1 {
+      margin-top: 0;
+      font-size: 28px;
+    }
+
+    &__text1 {
+      width: 100%;
+    }
+
+    &__title2 {
+      margin-top: 0;
+      text-align: left;
+      font-size: 28px;
+    }
+
+    &__text2 {
+      text-align: left;
+      width: 100%;
+    }
+
+    &__image {
+      margin-top: 40px;
+      margin-bottom: 50px;
+    }
+
+    &__image img {
+      width: 100%;
+    }
+  }
+
+  .vision__container {
+    width: calc(100% - 30px);
+    margin: 0 auto;
+  }
+
+  .vision__image {
+    display: none;
+  }
+
+  .vision__image2 {
+    display: none;
+  }
+
+  .about-end {
+    text-align: left;
+  }
+}

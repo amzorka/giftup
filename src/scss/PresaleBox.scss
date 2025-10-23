@@ -1,0 +1,624 @@
+.presalee {
+  position: relative;
+  padding: 0;
+}
+
+.presale__box {
+  position: relative;
+  width: 982px;
+  height: 500px;
+  margin: 0 auto 170px;
+  border-radius: 50px;
+
+  /* фон и рамка как на 1 скрине: Fill #000 30% + Stroke белый 20% (inside) */
+  background: linear-gradient(-58deg, #e0d6d1 0%, #ffffff 100%);
+  box-shadow: inset -4px -4px 4px rgba(0, 0, 0, 0.1),
+    inset 4px 6px 6px rgba(255, 255, 255, 0.25), 0 0 30px rgba(0, 0, 0, 0.15);
+  padding-top: 40px; /* внутренний отступ сверху по ТЗ, по бокам тоже */
+  color: #161616;
+  text-align: center;
+}
+
+/* типографика */
+.presale__step {
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  color: #161616;
+  letter-spacing: 0.02em;
+  margin-top: 30px;
+}
+
+.presale__desc {
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #161616;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* два инпута + стрелка */
+.presale__row {
+  margin-top: 50px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px; /* расстояние между левым инпутом, стрелкой и правым инпутом */
+}
+
+/* стрелка между полями */
+.presale__swap {
+  margin-top: 35px;
+  width: 30px;
+  height: auto;
+  align-self: center;
+  opacity: 0.9;
+}
+
+/* чекбокс */
+.presale__agree {
+  margin: 23px 0 0 100px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px; /* расстояние между коробкой и текстом */
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: #161616;
+  cursor: pointer;
+  text-align: left;
+}
+.presale__checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.4);
+  background: transparent;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.presale__agree.is-checked .presale__checkbox {
+  background: linear-gradient(90deg, #eb6f25 0%, #f1aa7f 100%);
+  box-shadow: inset 0 0 0 1.5px #eb6f25;
+}
+.presale__agree-text {
+  font: 300 14px/150% "SF Pro Text", sans-serif;
+  color: rgba(22, 22, 22, 0.9);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* кнопка */
+.presale__actions {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+}
+.presale__btn {
+  width: 143px;
+  height: 44px;
+  border-radius: 100px; /* на случай, если базовая .btn переопределена */
+  background: linear-gradient(90deg, #eb6f25 0%, #f1aa7f 100%);
+  color: #ffffff;
+  font-family: "SF Pro Text", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 100%;
+  border: none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.field,
+.field__control {
+  text-align: center;
+}
+
+.field__label {
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #161616;
+  margin-bottom: 16px !important;
+}
+
+.field__control {
+  position: relative;
+  height: 50px;
+  width: 372px;
+  border-radius: 10px;
+  border: 1px solid rgba(22, 22, 22, 0.3);
+  background: #ffffff;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 15px;
+
+  &:focus-within {
+    border-color: #eb6f25;
+    box-shadow: 0 0 0 3px rgba(235, 111, 37, 0.15);
+  }
+}
+
+.field__input {
+  width: 100%;
+  height: 100%;
+  padding: 0 46px 0 15px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #161616;
+
+  &::placeholder {
+    color: rgba(22, 22, 22, 0.5);
+  }
+}
+
+/* Контейнер сцен: одна ячейка, все сцены кладём друг на друга */
+.presale__stages {
+  display: grid; /* <-- ВАЖНО */
+}
+
+/* Каждая сцена занимает одну и ту же ячейку грида */
+.presale__stage {
+  grid-area: 1 / 1; /* кладём поверх друг друга */
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none; /* чтобы клик не ловился, пока сцена скрыта */
+}
+
+/* Активная сцена видима и кликабельна */
+.presale__stage.is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.payline__copy btn {
+  width: 17px;
+  height: 20px;
+}
+
+.presale__stage,
+.presale__step-wrap {
+  position: relative;
+  min-height: 100%;
+}
+
+/* Общие для шагов */
+.presale__step-wrap {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.presale__title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 120%;
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  letter-spacing: 0.02em;
+  color: #161616;
+}
+
+.presale__subtitle {
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  color: #161616;
+  letter-spacing: 0.02em;
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.presale__hint {
+  margin: 18px auto 0;
+  max-width: 780px;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  color: #161616;
+  font-weight: 300;
+}
+
+.presale__link {
+  color: #161616;
+  font-weight: 300;
+  text-decoration: underline;
+}
+
+.presale__links {
+  color: #eb6f25;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.presale__links--highlight {
+  text-decoration: underline;
+}
+
+.field__token {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-45%);
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* ===== Адрес (капсула) ===== */
+
+.payline {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* два равных столбца */
+  gap: 20px; /* расстояние между ними */
+  align-items: end; /* подписи на одной линии с полями */
+}
+
+.addr {
+  margin-top: 28px;
+}
+.addr__label {
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  color: #161616;
+}
+.addr__control {
+  border-radius: 10px;
+  border: 1px solid rgba(22, 22, 22, 0.3);
+  background: #ffffff;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  margin: 0 auto;
+  width: 400px;
+  height: 50px;
+  &:focus-within {
+    border-color: #eb6f25;
+    box-shadow: 0 0 0 3px rgba(235, 111, 37, 0.15);
+  }
+}
+.addr__input {
+  width: 400px;
+  height: 50px;
+  padding: 0 56px 0 20px; /* справа место под кнопку */
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #161616;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  font-weight: 300;
+  text-align: left;
+}
+.addr__copy {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.addr__copy img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.addr__copy:hover {
+  border-color: rgba(71, 160, 220, 0.6);
+  box-shadow: 0 0 0 2px rgba(39, 148, 212, 0.25) inset;
+}
+
+/* ==== Шаг 3: сетка из двух колонок ==== */
+.wallet-steps {
+  margin-left: 40px;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0; /* как в макете, «воздух» между колонками */
+  row-gap: 0;
+  align-items: start;
+}
+
+/* Сбрасываем дефолт и делаем кастомную нумерацию */
+.ws-col {
+  counter-reset: wsnum;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Основные пункты 1–5 */
+.ws-col > li {
+  position: relative;
+  counter-increment: wsnum;
+  margin: 22px 0; /* интерлиньяж между пунктами */
+  padding-left: 15px; /* место под номер */
+  font: 600 14px/150% "Inter", sans-serif; /* как в макете */
+  letter-spacing: 0.02em;
+  color: #161616;
+  text-align: left;
+}
+.ws-col > li::before {
+  content: counter(wsnum) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 600;
+  color: #161616;
+}
+
+/* Заголовок «Enter the following details…» (правильный вес и отступ) */
+.ws-heading {
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* Подпункты у пункта №4 — буллеты •, более мелкий кегль */
+.ws-bullets {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ws-bullets li {
+  width: 450px;
+  position: relative;
+  padding-left: 18px;
+  margin: 8px 0;
+  font: 400 14px/150% "Inter", sans-serif; /* подзаголовочная типографика */
+  letter-spacing: 0.02em;
+  color: #161616;
+}
+.ws-bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 3px;
+  line-height: 1.5;
+  font-size: 10px;
+}
+
+/* Копируемый адрес — как ссылка */
+.copy-inline {
+  border: none;
+  background: transparent;
+  color: #2794d4;
+  font: 400 14px/150% "Inter", sans-serif;
+  letter-spacing: 0.02em;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.copy-inline:hover {
+  opacity: 0.9;
+}
+
+.ws-col--right {
+  counter-reset: wsnum 3; /* 3 + 1 инкремент = 4 */
+}
+
+.thanks {
+  margin-top: 70px;
+  line-height: 150%;
+  letter-spacing: 2%;
+}
+
+.presale {
+  overflow: visible;
+}
+
+@media (max-width: 768px) {
+  .presale__box {
+    box-sizing: border-box;
+    position: relative; /* чтобы прибить кнопку внутри */
+    width: calc(100% - 30px);
+    height: auto;
+    margin: 0 auto;
+    padding: 24px 15px 120px; /* место снизу под кнопку */
+    border-radius: 20px;
+  }
+
+  /* заголовки/описание */
+  .presale__title {
+    font-size: 32px;
+    line-height: 120%;
+    text-align: center;
+  }
+  .presale__step {
+    margin-top: 30px;
+    font-size: 18px;
+    line-height: 140%;
+  }
+
+  .presale__stage.is-active,
+  .presale__step-wrap.is-visible {
+    position: static; /* снова участвует в потоке */
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .presale__desc {
+    margin-top: 30px;
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  /* поля в колонку */
+  .presale__row {
+    margin-top: 24px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .field,
+  .field__control {
+    width: 100%;
+    text-align: left;
+  }
+
+  .field__label {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .field__control {
+    height: 56px;
+    border-radius: 12px;
+  }
+  .field__input {
+    padding: 0 54px 0 15px;
+    font-size: 16px;
+  }
+
+  /* стрелка между полями (вертикально) */
+  .presale__swap {
+    margin: 7px auto -31px; /* компактнее, поджимает поля к стрелке */
+    width: 30px;
+    transform: rotate(90deg); /* если исходная горизонтальная */
+  }
+
+  /* чекбокс — крупнее и левее */
+  .presale__agree {
+    margin: 10px 0 0;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .presale__agree-text {
+    font-size: 14px;
+    line-height: 150%;
+  }
+
+  /* кнопка — всегда внизу окна, с отступом 40px */
+  .presale__actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    width: 188px;
+  }
+  .presale__btn,
+  .btn.btn--primary.presale__btn {
+    width: 100%;
+    height: 56px;
+    border-radius: 16px;
+    font-size: 18px;
+  }
+
+  /* ——— шаг 2 (адрес) ——— */
+  .addr {
+    margin-top: 20px;
+  }
+  .addr__label {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .addr__control {
+    width: 100%;
+    height: 56px;
+  }
+  .addr__input {
+    width: 100%;
+    padding: 0 56px 0 16px;
+    font-size: 16px;
+    border-radius: 12px;
+    text-align: left;
+  }
+  .addr__copy {
+    top: 45%;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .payline {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* ——— шаг 3 (инструкции кошелька) ——— */
+  .wallet-steps {
+    margin-left: 0;
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr; /* одна колонка */
+    row-gap: 0;
+  }
+  .ws-col > li {
+    margin: 14px 0;
+    font: 700 14px/150% Inter, sans-serif;
+  }
+  .ws-bullets li {
+    width: auto;
+    font: 300 14px/150% Inter, sans-serif;
+  }
+
+  .ws-col > li::before {
+    font-weight: 700;
+  }
+
+  .ws-heading {
+    font-weight: 700;
+  }
+
+  /* сцены/переходы — без фиксированных высот,
+     нижняя кнопка уже «absolute» внутри .presale__box */
+  .presale__stages {
+    display: block;
+    position: relative;
+  }
+  .presale__stage,
+  .presale__step-wrap {
+    position: absolute;
+    inset: 0; /* растянем на область стадий */
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    min-height: 0;
+  }
+}

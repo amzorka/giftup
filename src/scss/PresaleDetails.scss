@@ -1,0 +1,208 @@
+.presale {
+  width: 100%;
+  background: #fff;
+  border-radius: 0 0 50px 50px;
+  padding: 0 0 100px 0;
+
+  .container {
+    width: 1180px;
+    margin: 0 auto;
+  }
+
+  &-title {
+    text-align: center;
+    font-family: "SF Pro Text", sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    color: #161616;
+    margin-bottom: 30px;
+  }
+
+  &-subtitle {
+    width: 520px;
+    height: 52px;
+    text-align: center;
+    font-family: "SF Pro Text", sans-serif;
+    font-size: 14px;
+    line-height: 150%;
+    color: #161616;
+    opacity: 0.8;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__left {
+    .presale__block-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .presale__info-box {
+      background: linear-gradient(-58deg, #ffffff 0%, #e0d6d1 100%);
+      border-radius: 15px;
+      box-shadow: inset -4px -4px 4px rgba(0, 0, 0, 0.1),
+        inset 4px 6px 6px rgba(255, 255, 255, 0.25),
+        0 0 30px rgba(0, 0, 0, 0.15);
+      padding: 32px 0px 33px 20px;
+      height: 195px;
+      width: 347px;
+      opacity: 0.67;
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        height: 15px;
+        width: 296px;
+        margin: 30px 0;
+        margin-top: 0;
+
+        img {
+          height: 15px;
+          width: auto;
+        }
+
+        p {
+          font-size: 14px;
+          color: #000000;
+          line-height: 150%;
+        }
+
+        b {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  &__right {
+    .presale__block-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .progress {
+      margin-bottom: 15px;
+
+      span {
+        display: block;
+        margin-bottom: 9px;
+        font-size: 14px;
+        color: #161616;
+        font-weight: 600;
+        height: 10px;
+      }
+
+      .bar {
+        width: 783px;
+        height: 35px;
+        background: #f5f2f0;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: inset -4px -4px 4px rgba(0, 0, 0, 0.1),
+          /* тень внутрь, тёмная */ inset 3px 3px 4px rgba(255, 255, 255, 0.25),
+          /* тень внутрь, светлая */ 0 0 15px rgba(0, 0, 0, 0.15); /* внешняя тень */
+
+        .fill {
+          height: 100%;
+          border-radius: 15px;
+          background: linear-gradient(90deg, #f0a070 0%, #eb7128 100%);
+          box-shadow: inset -4px -4px 4px rgba(0, 0, 0, 0.1),
+            inset 3px 3px 4px rgba(255, 255, 255, 0.25),
+            0 0 15px rgba(0, 0, 0, 0.15);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .presale {
+    padding: 0px 0px 100px;
+    border-radius: 0 0 30px 30px;
+
+    .container {
+      width: 100%;
+    }
+
+    &-title {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    &-subtitle {
+      width: calc(100% - 30px);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 80px;
+    }
+
+    &__content {
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+    }
+
+    &__left,
+    &__right {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    &__left {
+      .presale__info-box {
+        box-sizing: border-box;
+        width: calc(100% - 30px);
+        margin: 0 auto;
+        height: auto;
+        padding: 24px 20px;
+        opacity: 1;
+        box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.05),
+          inset 3px 3px 4px rgba(255, 255, 255, 0.25),
+          0 0 20px rgba(0, 0, 0, 0.1);
+
+        .info-item {
+          margin: 18px 0;
+
+          img {
+            height: 14px;
+          }
+
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    &__right {
+      .progress {
+        span {
+          font-size: 13px;
+          line-height: 1.4;
+          margin: 10px auto;
+          width: calc(100% - 30px);
+        }
+
+        .bar {
+          width: calc(100% - 30px);
+          margin: 0 auto;
+          height: 24px;
+        }
+      }
+    }
+
+    .presale__block-title {
+      text-align: center;
+    }
+  }
+}

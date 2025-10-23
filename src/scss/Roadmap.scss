@@ -1,0 +1,195 @@
+.roadmap {
+  width: 100%;
+  padding: 90px 0 45px 0;
+  background-image: url("../bgs/full.png");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% 750px; /* вместо cover — чтобы не обрезало по краям */
+  overflow: hidden;
+
+  .container {
+    width: 1180px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 180px; /* подними контент выше дуги */
+  }
+
+  &__title {
+    font-family: "SF Pro Text", sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    color: #161616;
+    margin-bottom: 60px;
+  }
+
+  &__image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    img {
+      width: 1064px;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__stages {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  &__stage {
+    width: 200px;
+  }
+
+  &__quarter {
+    font-family: "SF Pro Text", sans-serif;
+    font-size: 14px;
+    color: #161616;
+    margin-bottom: 10px;
+    margin-top: 0;
+    font-weight: 300;
+  }
+
+  &__subtitle {
+    font-family: "SF Pro Text", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #161616;
+    margin-bottom: 20px;
+    margin-top: 0;
+  }
+
+  &__desc {
+    font-family: "SF Pro Text", sans-serif;
+    letter-spacing: 2%;
+    font-size: 12px;
+    line-height: 150%;
+    color: #161616;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 400;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+
+  &__button {
+    width: 161px;
+    height: 44px;
+    border: none;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #eb6f25 0%, #f1aa7f 100%);
+    color: #ffffff;
+    font-family: "SF Pro Text", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &__text {
+    font-family: "SF Pro Text", sans-serif;
+    font-size: 14px;
+    line-height: 150%;
+    color: #161616;
+    max-width: 400px;
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .roadmap--mobile {
+    padding: 60px 0 100px;
+    text-align: left;
+    background-image: url("../bgs/full-mobile.png");
+    background-size: 100% 90%;
+    background-position: top;
+
+    .container {
+      width: calc(100% - 30px);
+    }
+
+    .roadmap__title {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .roadmap__desc {
+      max-width: 268px;
+      text-align: left;
+    }
+
+    .roadmap__subtitle {
+      text-align-last: left;
+    }
+
+    .roadmap__quarter {
+      text-align: left;
+    }
+
+    .roadmap__mobile-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .roadmap__mobile-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: auto;
+      z-index: 0;
+    }
+
+    .roadmap__mobile-stages {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      padding-left: 70px; // чтобы отступить от линии
+      position: relative;
+      z-index: 1;
+    }
+
+    .roadmap__mobile-stage {
+      margin-left: 70px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .roadmap__bottom {
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-top: 60px;
+      gap: 20px;
+
+      .roadmap__button {
+        width: 100%;
+        max-width: 161px;
+        height: 44px;
+      }
+
+      .roadmap__text {
+        text-align: center;
+      }
+    }
+  }
+}

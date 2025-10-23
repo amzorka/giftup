@@ -1,0 +1,115 @@
+.hero-mobile {
+  width: calc(100% - 30px);
+  padding: 40px 20px 100px;
+  position: relative;
+  text-align: left;
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 0;
+  }
+
+  &__title {
+    font-size: 64px;
+    font-weight: 100;
+    line-height: 1.1;
+    color: #161616;
+    margin: 0 0 20px 0;
+    letter-spacing: 2%;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    color: #161616;
+    margin-bottom: 30px;
+    margin-top: 0;
+
+    span {
+      color: #eb6f25;
+    }
+  }
+
+  &__desc {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: #161616;
+    margin: 0 0 50px 0;
+  }
+
+  &__actions {
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  &__link {
+    color: #161616;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__btn {
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #eb6f25 0%, #f1aa7f 100%);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  &__image {
+    width: calc(100% - 30px);
+    height: auto;
+    margin: 0 auto 10px;
+    display: block;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 14px;
+    color: #161616;
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__line {
+    width: 117px;
+    height: 6px;
+    background: #eb6f25;
+  }
+}
